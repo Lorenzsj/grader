@@ -45,9 +45,7 @@ sub search {
             chdir "..";
         }
     }
-    else {
-        job($root);
-    }
+    job($root);
 }
 
 # store all directories from current directory

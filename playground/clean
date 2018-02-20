@@ -9,5 +9,6 @@ rm -r targz_test
 rm -r zip_test
 rm -r flat_test
 rm -r error_test
+rm -r null_test
 
 cp -r ../test-suite/. .
