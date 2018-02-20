@@ -23,6 +23,7 @@ sub job {
     my ($file) = grep($_ eq "Makefile", glob '*');
     if ($file) {
         system("make > build.txt 2>&1");
+        system("cp $path/data.txt data.txt");
     }
     else {
         # if a cpp file exists, lets try to compile.. them
@@ -30,9 +31,9 @@ sub job {
         $file = grep(/\.cpp$/, glob '*');
         if ($file) {
             system("g++ -std=c++11 *.cpp > build.txt 2>&1");
+            system("cp $path/data.txt data.txt");
         }
     }
-    system("cp $path/data.txt data.txt");
 }
 
 sub search {
