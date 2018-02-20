@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+rm -r 7z_test
+rm -r empty_test
+rm -r make_test
+rm -r subdir_test
+rm -r tar_test
+rm -r targz_test
+rm -r zip_test
+
+cp -r ../test-suite/. .
