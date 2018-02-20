@@ -22,14 +22,14 @@ sub job {
     # redirect output to build.txt
     my ($file) = grep($_ eq "Makefile", glob '*');
     if ($file) {
-        system("make &> build.txt")
+        system("make > build.txt 2>&1");
     }
     else {
         # if a cpp file exists, lets try to compile.. them
         # redirect output to build.txt
         $file = grep(/\.cpp$/, glob '*');
         if ($file) {
-            system("g++ -std=c++11 *.cpp &> build.txt");
+            system("g++ -std=c++11 *.cpp > build.txt 2>&1");
         }
     }
     system("cp $path/data.txt data.txt");

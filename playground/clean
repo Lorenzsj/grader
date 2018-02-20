@@ -7,5 +7,7 @@ rm -r subdir_test
 rm -r tar_test
 rm -r targz_test
 rm -r zip_test
+rm -r flat_test
+rm -r error_test
 
 cp -r ../test-suite/. .
