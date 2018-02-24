@@ -23,7 +23,7 @@ sub job {
     my ($file) = grep($_ eq "Makefile", glob '*');
     if ($file) {
         system("make > build.txt 2>&1");
-        system("cp $path/data.txt data.txt");
+        system("cp '$path/data.txt' data.txt");
     }
     else {
         # if a cpp file exists, lets try to compile.. them
@@ -31,7 +31,7 @@ sub job {
         $file = grep(/\.cpp$/, glob '*');
         if ($file) {
             system("g++ -std=c++11 *.cpp > build.txt 2>&1");
-            system("cp $path/data.txt data.txt");
+            system("cp '$path/data.txt' data.txt");
         }
     }
 }
@@ -62,23 +62,23 @@ foreach (@dirs) {
     if ($archive) { 
         my ($ext) = $archive =~ /((\.[^.\s]+)+)$/; # parse file extension
         if ($ext eq ".zip") {
-            if (system("unzip $archive > /dev/null 2>&1")) {
-                die "Unable to unzip $_/$archive!";
+            if (system("unzip '$archive' > /dev/null 2>&1")) {
+                die "Unable to unzip '$_/$archive'!";
             }
         }
         elsif ($ext eq ".tar") {
             if (system("tar -xf $archive")) {
-                die "Unable to tar -xf $_/$archive!";
+                die "Unable to tar -xf '$_/$archive'!";
             }
         }
         elsif ($ext eq ".tar.gz") {
-            if (system("tar -xzf $archive")) {
-                die "Unable to tar -xzf $_/$archive!";
+            if (system("tar -xzf '$archive'")) {
+                die "Unable to tar -xzf '$_/$archive'!";
             }
         }
         elsif ($ext eq ".7z") {
-            if (system("7z e $archive > /dev/null 2>&1")) {
-                die "Unable to 7z e $_/$archive!";
+            if (system("7z e '$archive' > /dev/null 2>&1")) {
+                die "Unable to 7z e '$_/$archive'!";
             }
         }
     }
